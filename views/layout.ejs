@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include('header') %>
+    <h1><%= title %></h1>
+    <p>Welcome to <%= title %></p>
+
+    <div class="row">
+      <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+        <div id="success" class="alert alert-success" <% if(noMessages){ %>hidden <% } %>>
+            <%= successMsg %>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+        
+
+        <div class="row">
+            <% products.forEach(function(row){ %>
+            <div class="col-sm-6 col-md-4">
+                <div class="thumbnail">
+                    <img src="<%= row.imagepath %>" class="img-responsive" alt="">
+                    <div class="caption">
+                        <h3><%= row.title %></h3>
+                        <p class="description"><%= row.description %></p>
+                        <div class="clearfix"> 
+                            <div class="price pull-left">$<%= row.price %></div>   
+                            <a href="/add-to-cart/<%= row._id %>" class="btn btn-success pull-right" role="button">Add to Shopping cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% })  %>
+        </div>
+        
+    </div>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+  </body>
+</html>

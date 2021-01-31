@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <%- include('header') %>
+
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>User Profile</h1>
+        <hr>
+        <h2>My Orders</h2>
+        <% orders.forEach(function(row) { %>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <ul class="list-group">
+                <% row.items.forEach(function(row1) { %>
+                <li class="list-group-item">
+                  <span class="badge"><%= row1.price %></span>
+                  <%= row1.item.title %> | <%= row1.qty %> Units
+                </li>
+                <% }) %>
+              </ul>
+            </div>
+            <div class="panel-footer">
+              <strong>Total Price : $<%= row.cart.totalPrice %></strong></div>
+          </div>
+          <% }) %>
+      </div>
+    </div>
+
+
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+  </body>
+</html>
